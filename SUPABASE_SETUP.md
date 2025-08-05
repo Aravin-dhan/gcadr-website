@@ -19,8 +19,14 @@ This guide will help you deploy the GCADR website backend using Supabase as your
 2. **Copy Connection String**:
    ```
    postgresql://postgres:[YOUR-PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
+
+   postgresql://postgres:[YOUR-PASSWORD]@db.kyllxdsbyojzgnxwqmly.supabase.co:5432/postgres
    ```
 3. **Note down**:
+
+NEXT_PUBLIC_SUPABASE_URL=https://kyllxdsbyojzgnxwqmly.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5bGx4ZHNieW9qemdueHdxbWx5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzNzkwMDMsImV4cCI6MjA2OTk1NTAwM30.c7pfIY3nkcr-01nI7vWp44RSly7bzIHyqN8Bp_Q62K8
+
    - Project URL: `https://[PROJECT-REF].supabase.co`
    - Anon Key: `eyJ...` (from Settings > API)
    - Service Role Key: `eyJ...` (from Settings > API)

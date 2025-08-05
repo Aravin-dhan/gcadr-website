@@ -32,11 +32,19 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/carousel/')
+        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
+          (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')
+            ? 'https://gcadr-website.onrender.com'
+            : 'http://localhost:8000')
+
+        const response = await fetch(`${API_BASE_URL}/api/carousel/`)
         if (response.ok) {
           const data = await response.json()
           const imagesArray = Array.isArray(data) ? data : (data.results || [])
-          setImages(imagesArray)
+          setImages(imagesArray.map((img: any) => ({
+            ...img,
+            image: img.image_url || img.image
+          })))
         } else {
           // Fallback images
           setImages([

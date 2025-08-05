@@ -212,3 +212,9 @@ class CarouselImageListView(generics.ListAPIView):
 class NewsletterArchiveListView(generics.ListAPIView):
     serializer_class = NewsletterArchiveSerializer
     queryset = NewsletterArchive.objects.all()
+
+
+# Announcement Views
+class AnnouncementListView(generics.ListAPIView):
+    serializer_class = AnnouncementSerializer
+    queryset = Announcement.objects.filter(published_date__lte=models.functions.Now()).order_by('-published_date')

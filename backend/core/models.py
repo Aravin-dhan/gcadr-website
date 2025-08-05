@@ -55,6 +55,14 @@ class BlogPost(BaseModel):
     class Meta:
         ordering = ['-created_at']
 
+    def get_featured_image_url(self):
+        """Return full URL for featured image"""
+        if self.featured_image:
+            if hasattr(self.featured_image, 'url'):
+                return self.featured_image.url
+            return f"https://kyllxdsbyojzgnxwqmly.supabase.co/storage/v1/object/public/gcadr-files/{self.featured_image.name}"
+        return None
+
     def __str__(self):
         return self.title
 
@@ -250,6 +258,14 @@ class TeamMember(BaseModel):
     class Meta:
         ordering = ['order', 'name']
 
+    def get_image_url(self):
+        """Return full URL for team member image"""
+        if self.image:
+            if hasattr(self.image, 'url'):
+                return self.image.url
+            return f"https://kyllxdsbyojzgnxwqmly.supabase.co/storage/v1/object/public/gcadr-files/{self.image.name}"
+        return None
+
     def __str__(self):
         return f"{self.name} - {self.get_role_display()}"
 
@@ -263,6 +279,14 @@ class Leadership(BaseModel):
 
     class Meta:
         ordering = ['order', 'name']
+
+    def get_image_url(self):
+        """Return full URL for leadership image"""
+        if self.image:
+            if hasattr(self.image, 'url'):
+                return self.image.url
+            return f"https://kyllxdsbyojzgnxwqmly.supabase.co/storage/v1/object/public/gcadr-files/{self.image.name}"
+        return None
 
     def __str__(self):
         return f"{self.name} - {self.position}"
@@ -304,6 +328,14 @@ class CarouselImage(BaseModel):
 
     class Meta:
         ordering = ['order', '-created_at']
+
+    def get_image_url(self):
+        """Return full URL for carousel image"""
+        if self.image:
+            if hasattr(self.image, 'url'):
+                return self.image.url
+            return f"https://kyllxdsbyojzgnxwqmly.supabase.co/storage/v1/object/public/gcadr-files/{self.image.name}"
+        return None
 
     def __str__(self):
         return self.title
