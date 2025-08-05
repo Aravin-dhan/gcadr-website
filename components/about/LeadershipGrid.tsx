@@ -56,7 +56,26 @@ export function LeadershipGrid() {
             position: 'Faculty Convenor, GCADR',
             bio: 'Prof. (Dr.) Vikas Gandhi is the Faculty Convenor of the GNLU Centre for Alternative Dispute Resolution. Under his distinguished leadership, GCADR has emerged as a premier education hub for ADR training, providing specialized training and promoting a culture of dispute resolution through conferences, workshops, and competitions. He has successfully created and sustainably developed a vibrant culture of ADR within the University and beyond.',
             email: 'vikas.gandhi@gnlu.ac.in',
+            image: '/dr-vikas-gandhi.jpg',
             order: 1
+          },
+          {
+            id: '2',
+            name: 'Dr. Nitin Malik',
+            position: 'Associate Professor & Director, GCADR',
+            bio: 'Dr. Nitin Malik serves as Associate Professor and Director of the GNLU Centre for Alternative Dispute Resolution. With extensive expertise in dispute resolution mechanisms, he has been instrumental in developing innovative ADR programs and fostering academic excellence in the field of alternative dispute resolution.',
+            email: 'nitin.malik@gnlu.ac.in',
+            image: '/dr-nitin-malik.jpg',
+            order: 2
+          },
+          {
+            id: '3',
+            name: 'Prof. (Dr.) Sanjeevi Shanthakumar',
+            position: 'Professor & Academic Advisor, GCADR',
+            bio: 'Prof. (Dr.) Sanjeevi Shanthakumar brings decades of academic and practical experience in alternative dispute resolution. As Academic Advisor to GCADR, he provides strategic guidance and mentorship, contributing significantly to the center\'s research initiatives and academic programs.',
+            email: 'sanjeevi.shanthakumar@gnlu.ac.in',
+            image: '/prof-sanjeevi-shanthakumar.jpg',
+            order: 3
           }
         ])
       } finally {
@@ -101,7 +120,7 @@ export function LeadershipGrid() {
         </motion.div>
 
         {/* Leadership Grid */}
-        <div className="grid lg:grid-cols-1 gap-12">
+        <div className="grid lg:grid-cols-1 gap-12 max-w-5xl mx-auto">
           {leadership.map((member, index) => (
             <motion.div
               key={member.id}
@@ -113,15 +132,15 @@ export function LeadershipGrid() {
               <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
                 {/* Profile Image */}
                 <div className="flex-shrink-0">
-                  <div className="w-32 h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 rounded-2xl flex items-center justify-center">
+                  <div className="w-32 h-32 lg:w-48 lg:h-48 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 rounded-2xl overflow-hidden shadow-lg">
                     {member.image ? (
-                      <img 
-                        src={member.image} 
+                      <img
+                        src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover rounded-2xl"
+                        className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
-                      <div className="w-28 h-28 lg:w-36 lg:h-36 bg-white dark:bg-dark-surface rounded-xl flex items-center justify-center">
+                      <div className="w-full h-full flex items-center justify-center">
                         <span className="text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400">
                           {member.name.split(' ').map(n => n[0]).join('')}
                         </span>

@@ -33,7 +33,7 @@ export function TeamGrid() {
       setLoading(true)
       const response = await apiService.getTeamMembers()
       if (response.results && Array.isArray(response.results)) {
-        setTeamMembers(response.results.sort((a, b) => a.order - b.order))
+        setTeamMembers(response.results.sort((a: TeamMember, b: TeamMember) => a.order - b.order))
       } else {
         // Fallback data
         setTeamMembers([
