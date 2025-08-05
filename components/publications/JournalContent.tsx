@@ -1,14 +1,74 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { BookOpen, Download, ExternalLink } from 'lucide-react'
+import { apiService } from '@/lib/api'
+
+interface Journal {
+  id: string
+  title: string
+  description?: string
+  published_date?: string
+  file_url?: string
+  cover_image?: string
+}
 
 export function JournalContent() {
+  const [journals, setJournals] = useState<Journal[]>([])
+  const [loading, setLoading] = useState(true)
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  useEffect(() => {
+    const fetchJournals = async () => {
+      try {
+        setLoading(true)
+        const response = await apiService.getJournalArticles()
+        if (response.results && Array.isArray(response.results)) {
+          setJournals(response.results)
+        } else {
+          // Fallback data
+          setJournals([
+            {
+              id: '1',
+              title: 'GALR Journal Volume 1, Issue 1',
+              description: 'Inaugural issue featuring foundational articles on ADR in India',
+              published_date: '2023-01-01',
+              file_url: '/journals/galr-vol1-issue1.pdf'
+            },
+            {
+              id: '2',
+              title: 'GALR Journal Volume 1, Issue 2',
+              description: 'Special issue on International Commercial Arbitration',
+              published_date: '2023-06-01',
+              file_url: '/journals/galr-vol1-issue2.pdf'
+            }
+          ])
+        }
+      } catch (err) {
+        console.error('Error fetching journals:', err)
+        // Fallback data on error
+        setJournals([
+          {
+            id: '1',
+            title: 'GALR Journal Volume 1, Issue 1',
+            description: 'Inaugural issue featuring foundational articles on ADR in India',
+            published_date: '2023-01-01',
+            file_url: '/journals/galr-vol1-issue1.pdf'
+          }
+        ])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchJournals()
+  }, [])
 
   return (
     <section ref={ref} className="py-20 bg-gray-50 dark:bg-dark-surface">
@@ -49,76 +109,56 @@ export function JournalContent() {
               Access past issues of the Gujarat ADR Law Review Journal. All volumes are available for download in PDF format.
             </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Volume 1, Issue 1 */}
-              <div className="border border-gray-200 dark:border-dark-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-center mb-4">
-                  <BookOpen className="w-8 h-8 text-primary-600 dark:text-primary-400 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-dark-text">Volume 1, Issue 1</h3>
-                    <p className="text-sm text-gray-500 dark:text-dark-muted">January 2024</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 dark:text-dark-muted text-sm mb-4">
-                  Inaugural issue featuring foundational articles on ADR in India.
-                </p>
-                <a
-                  href="/journals/galr-v1-i1.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm transition-colors"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </a>
+            {loading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
+                <p className="text-gray-600 dark:text-dark-muted mt-2">Loading journals...</p>
               </div>
-
-              {/* Volume 1, Issue 2 */}
-              <div className="border border-gray-200 dark:border-dark-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-center mb-4">
-                  <BookOpen className="w-8 h-8 text-primary-600 dark:text-primary-400 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-dark-text">Volume 1, Issue 2</h3>
-                    <p className="text-sm text-gray-500 dark:text-dark-muted">June 2024</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 dark:text-dark-muted text-sm mb-4">
-                  Special issue on international arbitration and cross-border disputes.
-                </p>
-                <a
-                  href="/journals/galr-v1-i2.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm transition-colors"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </a>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {journals.map((journal, index) => (
+                  <motion.div
+                    key={journal.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="border border-gray-200 dark:border-dark-border rounded-lg p-6 hover:shadow-lg transition-shadow"
+                  >
+                    <div className="flex items-center mb-4">
+                      <BookOpen className="w-8 h-8 text-primary-600 dark:text-primary-400 mr-3" />
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-dark-text">{journal.title}</h3>
+                        {journal.published_date && (
+                          <p className="text-sm text-gray-500 dark:text-dark-muted">
+                            {new Date(journal.published_date).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long'
+                            })}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    {journal.description && (
+                      <p className="text-gray-600 dark:text-dark-muted text-sm mb-4">
+                        {journal.description}
+                      </p>
+                    )}
+                    {journal.file_url && (
+                      <a
+                        href={journal.file_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm transition-colors"
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        Download PDF
+                      </a>
+                    )}
+                  </motion.div>
+                ))}
               </div>
-
-              {/* Volume 2, Issue 1 */}
-              <div className="border border-gray-200 dark:border-dark-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-center mb-4">
-                  <BookOpen className="w-8 h-8 text-primary-600 dark:text-primary-400 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-dark-text">Volume 2, Issue 1</h3>
-                    <p className="text-sm text-gray-500 dark:text-dark-muted">January 2025</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 dark:text-dark-muted text-sm mb-4">
-                  Latest research on mediation practices and emerging ADR trends.
-                </p>
-                <a
-                  href="/journals/galr-v2-i1.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm transition-colors"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </a>
-              </div>
-            </div>
+            )}
+          </motion.div>
 
 
           </motion.div>

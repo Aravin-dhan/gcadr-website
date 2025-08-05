@@ -1,19 +1,24 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Linkedin, ExternalLink } from 'lucide-react'
+import { apiService } from '@/lib/api'
 
 interface TeamMember {
+  id: string
   name: string
-  role: string
-  batch: string
-  initials: string
-  linkedin: string
+  position: string
+  year?: string
+  linkedin_url?: string
   image?: string
+  bio?: string
+  order: number
 }
 
-const teamMembers: TeamMember[] = [
+export function TeamSection() {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
   {
     name: 'Garvita Bhatt',
     role: 'Convenor',
@@ -110,13 +115,33 @@ const teamMembers: TeamMember[] = [
     linkedin: 'https://linkedin.com/in/aarsh-soni',
     image: '/team/aarsh-soni.jpg'
   }
-]
+  ])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-export function TeamSection() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        setLoading(true)
+        const response = await apiService.getTeamMembers()
+        if (response.results && Array.isArray(response.results)) {
+          setTeamMembers(response.results.sort((a: TeamMember, b: TeamMember) => a.order - b.order))
+        }
+      } catch (err) {
+        console.error('Error fetching team members:', err)
+        setError('Failed to load team members')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTeamMembers()
+  }, [])
 
   return (
     <section ref={ref} className="py-20 bg-white">
@@ -141,12 +166,12 @@ export function TeamSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {teamMembers.map((member, index) => (
             <motion.div
-              key={`${member.name}-${member.role}`}
+              key={member.id || `${member.name}-${member.position}`}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="card group hover:shadow-lg transition-all duration-300 p-6 cursor-pointer"
-              onClick={() => window.open(member.linkedin, '_blank')}
+              className="card dark:bg-dark-card dark:border-dark-border group hover:shadow-lg transition-all duration-300 p-6 cursor-pointer"
+              onClick={() => window.open(member.linkedin_url || '#', '_blank')}
             >
               {/* Profile Picture */}
               <div className="flex items-center justify-center mb-6">
@@ -166,22 +191,24 @@ export function TeamSection() {
                     />
                   ) : null}
                   <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold" style={{ display: member.image ? 'none' : 'flex' }}>
-                    {member.initials}
+                    {member.name.split(' ').map(n => n[0]).join('')}
                   </div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-secondary-900 mb-1 group-hover:text-primary-600 transition-colors">
+                <h3 className="text-lg font-semibold text-secondary-900 dark:text-white mb-1 group-hover:text-primary-600 transition-colors">
                   {member.name}
                 </h3>
                 <p className="text-primary-600 font-medium mb-2 text-sm">
-                  {member.role}
+                  {member.position}
                 </p>
-                <p className="text-xs text-secondary-500 mb-3">
-                  {member.batch}
-                </p>
+                {member.year && (
+                  <p className="text-xs text-secondary-500 dark:text-slate-400 mb-3">
+                    {member.year}
+                  </p>
+                )}
 
                 {/* LinkedIn Icon */}
                 <div className="flex justify-center">

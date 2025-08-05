@@ -76,12 +76,12 @@ export function Navigation() {
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12 flex items-center justify-center">
               <img
-                src="/gcadr-golden-logo.jpg"
+                src="/gcadr-golden-header.png"
                 alt="GCADR Logo"
-                className="w-full h-full object-contain rounded-full"
+                className="w-full h-full object-contain rounded-lg"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "/gcadr-logo.jpeg";
+                  target.src = "/gcadr-golden-logo.jpg";
                 }}
               />
             </div>

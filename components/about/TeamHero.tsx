@@ -42,46 +42,7 @@ export function TeamHero() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6"
-              >
-                <Target className="w-8 h-8 mx-auto mb-4 text-primary-300" />
-                <h3 className="text-lg font-semibold mb-2">Dedication</h3>
-                <p className="text-sm text-accent-200">
-                  Committed to advancing ADR education and research
-                </p>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6"
-              >
-                <Heart className="w-8 h-8 mx-auto mb-4 text-primary-300" />
-                <h3 className="text-lg font-semibold mb-2">Passion</h3>
-                <p className="text-sm text-accent-200">
-                  Passionate about creating positive change through ADR
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6"
-              >
-                <Users className="w-8 h-8 mx-auto mb-4 text-primary-300" />
-                <h3 className="text-lg font-semibold mb-2">Collaboration</h3>
-                <p className="text-sm text-accent-200">
-                  Working together to achieve common goals
-                </p>
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>

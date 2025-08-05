@@ -10,16 +10,16 @@ export default function ArbitrationWeekPage() {
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-accent-600 via-accent-700 to-accent-800 dark:from-accent-800 dark:via-accent-900 dark:to-gray-900 text-white">
+      <section className="relative py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 dark:from-primary-800 dark:via-primary-900 dark:to-gray-900 text-white">
         <div className="container-max section-padding">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="heading-1 mb-6 text-accent-300">Annual Arbitration Week</h1>
-            <p className="text-xl text-accent-200 leading-relaxed mb-8">
+            <h1 className="heading-1 mb-6 text-primary-300">Annual Arbitration Week</h1>
+            <p className="text-xl text-primary-200 leading-relaxed mb-8">
               A comprehensive week-long program featuring workshops, seminars, competitions, and networking opportunities in the field of arbitration and alternative dispute resolution.
             </p>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 inline-block">
-              <p className="text-2xl font-bold text-accent-300">Coming Soon</p>
-              <p className="text-accent-200">Details will be announced shortly</p>
+              <p className="text-2xl font-bold text-primary-300">Coming Soon</p>
+              <p className="text-primary-200">Details will be announced shortly</p>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function ArbitrationWeekPage() {
                     <h4 className="font-semibold text-gray-900 dark:text-white">Expert Workshops</h4>
                     <p className="text-gray-700 dark:text-gray-200">Hands-on sessions led by renowned arbitration practitioners</p>
                   </div>
-                  <div className="border-l-4 border-accent-500 pl-4">
+                  <div className="border-l-4 border-primary-500 pl-4">
                     <h4 className="font-semibold text-gray-900 dark:text-white">Academic Seminars</h4>
                     <p className="text-gray-700 dark:text-gray-200">In-depth discussions on current arbitration trends and challenges</p>
                   </div>
@@ -65,7 +65,7 @@ export default function ArbitrationWeekPage() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="border-l-4 border-accent-500 pl-4">
+                  <div className="border-l-4 border-primary-500 pl-4">
                     <h4 className="font-semibold text-gray-900 dark:text-white">Panel Discussions</h4>
                     <p className="text-gray-700 dark:text-gray-200">Interactive sessions with industry leaders and experts</p>
                   </div>
@@ -93,7 +93,7 @@ export default function ArbitrationWeekPage() {
                   <p className="text-gray-700 dark:text-gray-200 text-sm">Lawyers, arbitrators, and mediators</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-accent-100 dark:bg-accent-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🎓</span>
                   </div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Academics & Students</h4>

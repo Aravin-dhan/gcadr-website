@@ -115,8 +115,21 @@ export function ContactInfo() {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-secondary-600 hover:text-primary-600 transition-colors"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">IG</span>
+                  <div className="w-8 h-8 rounded-lg overflow-hidden">
+                    <img
+                      src="/gcadr-golden-instagram.jpg"
+                      alt="GCADR Instagram"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'flex';
+                      }}
+                    />
+                    <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center" style={{ display: 'none' }}>
+                      <span className="text-white text-sm font-bold">IG</span>
+                    </div>
                   </div>
                   <span>@gcadr_gnlu</span>
                   <ExternalLink className="w-4 h-4" />

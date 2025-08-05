@@ -13,7 +13,7 @@ export default function GalleryPage() {
       <section className="relative py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 dark:from-primary-800 dark:via-primary-900 dark:to-dark-bg text-white">
         <div className="container-max section-padding">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="heading-1 mb-6">Gallery</h1>
+            <h1 className="heading-1 mb-6 text-yellow-400">Gallery</h1>
           </div>
         </div>
       </section>
