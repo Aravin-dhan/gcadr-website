@@ -164,14 +164,14 @@ export const api = {
       apiRequest<any>('/api/contact/submit/', {
         method: 'POST',
         body: JSON.stringify(data),
-        cache: false,
+        cache: 'no-store',
       }),
 
     newsletter: (data: any) =>
       apiRequest<any>('/api/newsletter/signup/', {
         method: 'POST',
         body: JSON.stringify(data),
-        cache: false,
+        cache: 'no-store',
       }),
 
     internship: (data: FormData) =>
@@ -193,7 +193,7 @@ export const api = {
       apiRequest<any>('/api/submissions/submit/', {
         method: 'POST',
         body: JSON.stringify(data),
-        cache: false,
+        cache: 'no-store',
       }),
   },
 
@@ -204,7 +204,7 @@ export const api = {
   search: (query: string) =>
     apiRequest<any>(`/api/search/?q=${encodeURIComponent(query)}`, {
       method: 'GET',
-      cache: false, // Don't cache search results
+      cache: 'no-store', // Don't cache search results
     }),
 }
 

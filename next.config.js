@@ -7,9 +7,18 @@ const nextConfig = {
 
   // Image optimization
   images: {
-    domains: ['localhost', 'cdn.sanity.io'],
+    domains: ['localhost', 'cdn.sanity.io', 'gcadr-website.onrender.com'],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
+    unoptimized: false,
+  },
+
+  // Build optimizations
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
   },
 
   // Compression
