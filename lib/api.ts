@@ -6,7 +6,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 const cache = new Map<string, { data: any; timestamp: number; ttl: number }>()
 
 interface ApiOptions {
-  cache?: boolean
+  useCache?: boolean
   cacheTTL?: number // Time to live in milliseconds
   timeout?: number
 }
@@ -54,7 +54,7 @@ async function apiRequest<T>(
   options: RequestInit & ApiOptions = {}
 ): Promise<T> {
   const {
-    cache: useCache = true,
+    useCache = true,
     cacheTTL = 5 * 60 * 1000, // 5 minutes default
     timeout = 10000,
     ...fetchOptions
@@ -164,6 +164,7 @@ export const api = {
       apiRequest<any>('/api/contact/submit/', {
         method: 'POST',
         body: JSON.stringify(data),
+        useCache: false,
         cache: 'no-store',
       }),
 
@@ -171,6 +172,7 @@ export const api = {
       apiRequest<any>('/api/newsletter/signup/', {
         method: 'POST',
         body: JSON.stringify(data),
+        useCache: false,
         cache: 'no-store',
       }),
 
@@ -193,6 +195,7 @@ export const api = {
       apiRequest<any>('/api/submissions/submit/', {
         method: 'POST',
         body: JSON.stringify(data),
+        useCache: false,
         cache: 'no-store',
       }),
   },
@@ -204,7 +207,8 @@ export const api = {
   search: (query: string) =>
     apiRequest<any>(`/api/search/?q=${encodeURIComponent(query)}`, {
       method: 'GET',
-      cache: 'no-store', // Don't cache search results
+      useCache: false, // Don't cache search results
+      cache: 'no-store',
     }),
 }
 
