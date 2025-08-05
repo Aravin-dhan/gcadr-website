@@ -90,24 +90,11 @@ export function HeroSection() {
                 <span>Gujarat National Law University</span>
               </motion.div>
               
-              <div className="space-y-4">
-                <img
-                  src="/gcadr-text-logo.png"
-                  alt="GCADR"
-                  className="h-16 md:h-20 object-contain"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const fallback = target.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = 'block';
-                  }}
-                />
-                <h1 className="heading-1" style={{ display: 'none' }}>
-                  <span className="block">Centre for</span>
-                  <span className="block text-primary-600">Alternative Dispute</span>
-                  <span className="block">Resolution</span>
-                </h1>
-              </div>
+              <h1 className="heading-1">
+                <span className="block">Centre for</span>
+                <span className="block text-primary-600">Alternative Dispute</span>
+                <span className="block">Resolution</span>
+              </h1>
               
               <p className="body-large max-w-xl">
                 Advancing ADR education, research, and practice through innovative programs, 

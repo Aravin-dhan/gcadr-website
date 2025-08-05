@@ -73,21 +73,20 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-primary-700 dark:bg-primary-800 shadow-lg transition-all duration-300">
       <div className="container-max section-padding">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 flex items-center justify-center">
+          <Link href="/" className="flex items-center">
+            <div className="h-12 flex items-center justify-center">
               <img
-                src="/gcadr-golden-header.png"
+                src="/gcadr-golden-logo.jpg"
                 alt="GCADR Logo"
-                className="w-full h-full object-contain rounded-lg"
+                className="h-full w-auto object-contain rounded-lg"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "/gcadr-golden-logo.jpg";
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'block';
                 }}
               />
-            </div>
-            <div className="hidden sm:block">
-              <div className="text-xl font-bold text-accent-300">GCADR</div>
-              <div className="text-sm text-accent-200 font-medium">Gujarat National Law University</div>
+              <div className="text-xl font-bold text-accent-300" style={{ display: 'none' }}>GCADR</div>
             </div>
           </Link>
 
