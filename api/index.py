@@ -1,22 +1,19 @@
-# Vercel serverless function for Django
+from django.core.wsgi import get_wsgi_application
 import os
 import sys
 from pathlib import Path
 
-# Add the backend directory to Python path
-backend_dir = Path(__file__).parent.parent / 'backend'
-sys.path.insert(0, str(backend_dir))
+# Add backend to Python path
+backend_path = str(Path(__file__).parent.parent / 'backend')
+if backend_path not in sys.path:
+    sys.path.insert(0, backend_path)
 
 # Set Django settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gcadr_backend.settings')
 
-# Import Django WSGI application
-from django.core.wsgi import get_wsgi_application
-from django.core.management import execute_from_command_line
-
-# Initialize Django
+# Get WSGI application
 application = get_wsgi_application()
 
 # Vercel handler
-def handler(request, response):
-    return application(request, response)
+def handler(request):
+    return application(request)
