@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-secondary-900 antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Container and Layout */
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Typography - Completely Redesigned */
+  .heading-1 {
+    @apply text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight text-secondary-900 dark:text-white;
+    font-family: var(--font-playfair), serif;
+  }
+
+  .heading-2 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tight text-secondary-900 dark:text-white;
+    font-family: var(--font-playfair), serif;
+  }
+
+  .heading-3 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-secondary-900 dark:text-white;
+    font-family: var(--font-playfair), serif;
+  }
+
+  .heading-4 {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight text-secondary-900 dark:text-white;
+    font-family: var(--font-playfair), serif;
+  }
+
+  .heading-5 {
+    @apply text-xl sm:text-2xl font-semibold leading-tight text-secondary-900 dark:text-white;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .heading-6 {
+    @apply text-lg sm:text-xl font-semibold leading-tight text-secondary-900 dark:text-white;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .body-hero {
+    @apply text-xl sm:text-2xl leading-relaxed text-secondary-700 dark:text-gray-300;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .body-large {
+    @apply text-lg sm:text-xl leading-relaxed text-secondary-600 dark:text-gray-300;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .body-base {
+    @apply text-base sm:text-lg leading-relaxed text-secondary-600 dark:text-gray-300;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .body-small {
+    @apply text-sm leading-relaxed text-secondary-500 dark:text-gray-400;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .body-xs {
+    @apply text-xs leading-relaxed text-secondary-500 dark:text-gray-400;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white dark:bg-dark-card rounded-xl shadow-sm border border-secondary-100 dark:border-dark-border hover:shadow-md transition-shadow duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+  }
+
+  /* Buttons */
+  .btn-base {
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-primary-600 dark:bg-primary-500 text-white hover:bg-primary-700 dark:hover:bg-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-white dark:bg-dark-card text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:ring-primary-500;
+  }
+  
+  .btn-accent {
+    @apply btn-base bg-accent-600 text-white hover:bg-accent-700 focus:ring-accent-500 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-ghost {
+    @apply btn-base text-secondary-600 hover:text-secondary-900 hover:bg-secondary-50 focus:ring-secondary-500;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+  
+  /* Forms */
+  .form-input {
+    @apply block w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200;
+  }
+  
+  .form-textarea {
+    @apply form-input resize-none;
+  }
+  
+  .form-select {
+    @apply form-input pr-10 bg-white;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-secondary-700 mb-2;
+  }
+  
+  .form-error {
+    @apply text-sm text-red-600 mt-1;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200;
+  }
+  
+  .nav-link-active {
+    @apply nav-link text-primary-600;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  /* Utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-primary {
+    @apply bg-gradient-to-br from-primary-50 via-white to-secondary-50;
+  }
+  
+  .bg-gradient-accent {
+    @apply bg-gradient-to-br from-accent-50 via-white to-primary-50;
+  }
+  
+  /* Prose styling for rich text content */
+  .prose-custom {
+    @apply prose prose-lg prose-secondary max-w-none;
+  }
+  
+  .prose-custom h1 {
+    @apply heading-2;
+  }
+  
+  .prose-custom h2 {
+    @apply heading-3;
+  }
+  
+  .prose-custom h3 {
+    @apply heading-4;
+  }
+  
+  .prose-custom a {
+    @apply text-primary-600 hover:text-primary-700 no-underline hover:underline;
+  }
+  
+  .prose-custom blockquote {
+    @apply border-l-4 border-primary-200 bg-primary-50 p-4 italic;
+  }
+}
+
+/* Comprehensive Dark Mode Overrides */
+@layer utilities {
+  .dark {
+    color-scheme: dark;
+  }
+
+  .dark body {
+    @apply bg-slate-900 text-slate-100;
+  }
+
+  .dark .bg-white {
+    @apply bg-slate-800 !important;
+  }
+
+  .dark .bg-gray-50 {
+    @apply bg-slate-800 !important;
+  }
+
+  .dark .bg-gray-100 {
+    @apply bg-slate-700 !important;
+  }
+
+  .dark .bg-gray-200 {
+    @apply bg-slate-600 !important;
+  }
+
+  .dark .text-gray-900 {
+    @apply text-slate-100 !important;
+  }
+
+  .dark .text-gray-800 {
+    @apply text-slate-200 !important;
+  }
+
+  .dark .text-gray-700 {
+    @apply text-slate-300 !important;
+  }
+
+  .dark .text-gray-600 {
+    @apply text-slate-400 !important;
+  }
+
+  .dark .text-gray-500 {
+    @apply text-slate-500 !important;
+  }
+
+  .dark .text-secondary-900 {
+    @apply text-slate-100 !important;
+  }
+
+  .dark .text-secondary-800 {
+    @apply text-slate-200 !important;
+  }
+
+  .dark .text-secondary-700 {
+    @apply text-slate-300 !important;
+  }
+
+  .dark .text-secondary-600 {
+    @apply text-slate-400 !important;
+  }
+
+  .dark .border-gray-200 {
+    @apply border-slate-600 !important;
+  }
+
+  .dark .border-secondary-200 {
+    @apply border-slate-600 !important;
+  }
+
+  .dark .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .dark .shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .dark .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* Card backgrounds in dark mode */
+  .dark .card {
+    @apply bg-slate-800 border-slate-600 !important;
+  }
+
+  /* Form elements in dark mode */
+  .dark input,
+  .dark textarea,
+  .dark select {
+    @apply bg-slate-700 border-slate-600 text-slate-100 placeholder-slate-400 !important;
+  }
+
+  .dark input:focus,
+  .dark textarea:focus,
+  .dark select:focus {
+    @apply border-primary-500 ring-primary-500/20 !important;
+  }
+}
