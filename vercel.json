@@ -1,37 +1,21 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
   "env": {
-    "DJANGO_SETTINGS_MODULE": "gcadr_backend.settings",
-    "PYTHONPATH": "./backend",
-    "NEXT_PUBLIC_API_URL": "https://gcadr.vercel.app",
+    "NEXT_PUBLIC_API_URL": "https://your-render-backend.onrender.com",
     "NEXT_PUBLIC_SITE_URL": "https://gcadr.vercel.app"
   },
   "functions": {
-    "api/index.py": {
-      "includeFiles": "backend/**"
+    "app/**/*.js": {
+      "runtime": "nodejs18.x"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://your-render-backend.onrender.com/api/:path*"
+    }
+  ]
 }

@@ -1,10 +1,6 @@
 // API service with caching, error handling, and performance optimization
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (
-  typeof window !== 'undefined' && window.location.origin.includes('vercel.app')
-    ? window.location.origin
-    : 'http://localhost:8000'
-)
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 // Simple in-memory cache
 const cache = new Map<string, { data: any; timestamp: number; ttl: number }>()
