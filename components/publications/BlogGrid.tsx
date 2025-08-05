@@ -88,7 +88,7 @@ export function BlogGrid() {
 
   useEffect(() => {
     fetchBlogPosts()
-  }, [])
+  }, [fetchBlogPosts])
 
   useEffect(() => {
     if (searchTerm) {
@@ -161,9 +161,8 @@ export function BlogGrid() {
         {filteredPosts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post, index) => (
-              <Link href={`/publications/blog/${post.slug}`} prefetch={true}>
+              <Link key={post.id} href={`/publications/blog/${post.slug}`} prefetch={true}>
                 <motion.article
-                  key={post.id}
                   initial={{ opacity: 0, y: 30 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
