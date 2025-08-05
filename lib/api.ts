@@ -2,6 +2,70 @@
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
+// Type definitions
+export interface BlogPost {
+  id: string
+  title: string
+  slug: string
+  content: string
+  excerpt?: string
+  featured?: boolean
+  category?: string
+  author?: string
+  published_date?: string
+  image?: string
+}
+
+export interface Event {
+  id: string
+  title: string
+  slug: string
+  description: string
+  date: string
+  location?: string
+  type?: string
+  featured?: boolean
+  image?: string
+}
+
+export interface TeamMember {
+  id: string
+  name: string
+  position: string
+  bio?: string
+  email?: string
+  image?: string
+  order: number
+}
+
+export interface Journal {
+  id: string
+  title: string
+  slug: string
+  description?: string
+  published_date?: string
+  file_url?: string
+  cover_image?: string
+}
+
+export interface Newsletter {
+  id: string
+  title: string
+  slug: string
+  description?: string
+  published_date?: string
+  file_url?: string
+  cover_image?: string
+}
+
+export interface Announcement {
+  id: string
+  title: string
+  content: string
+  published_date?: string
+  priority?: string
+}
+
 // Simple in-memory cache
 const cache = new Map<string, { data: any; timestamp: number; ttl: number }>()
 
@@ -158,6 +222,33 @@ export const api = {
       apiRequest<any>('/api/leadership/', { method: 'GET', cacheTTL: 10 * 60 * 1000 }),
   },
 
+  // Journal endpoints
+  journals: {
+    list: () =>
+      apiRequest<any>('/api/journals/', { method: 'GET', cacheTTL: 10 * 60 * 1000 }),
+
+    detail: (slug: string) =>
+      apiRequest<any>(`/api/journals/${slug}/`, { method: 'GET' }),
+  },
+
+  // Newsletter endpoints
+  newsletters: {
+    list: () =>
+      apiRequest<any>('/api/newsletters/', { method: 'GET', cacheTTL: 10 * 60 * 1000 }),
+
+    detail: (slug: string) =>
+      apiRequest<any>(`/api/newsletters/${slug}/`, { method: 'GET' }),
+  },
+
+  // Announcement endpoints
+  announcements: {
+    list: () =>
+      apiRequest<any>('/api/announcements/', { method: 'GET', cacheTTL: 5 * 60 * 1000 }),
+
+    detail: (slug: string) =>
+      apiRequest<any>(`/api/announcements/${slug}/`, { method: 'GET' }),
+  },
+
   // Form submissions
   forms: {
     contact: (data: any) =>
@@ -239,7 +330,13 @@ export const apiService = {
   getTeamMembers: () => api.team.list(),
   getBlogPosts: (params?: any) => api.blogs.list(params),
   getJournalArticles: () => api.journals.list(),
-  submitContact: (data: any) => api.contact.submit(data),
-  submitInternship: (data: any) => api.internship.submit(data),
-  submitNewsletter: (data: any) => api.newsletter.submit(data),
+  getNewsletterArchives: () => api.newsletters.list(),
+  getAnnouncements: () => api.announcements.list(),
+  getEvents: (params?: any) => api.events.list(params),
+  getGalleries: () => api.galleries.list(),
+  getLeadership: () => api.leadership.list(),
+  submitContact: (data: any) => api.forms.contact(data),
+  submitInternship: (data: any) => api.forms.internship(data),
+  submitNewsletter: (data: any) => api.forms.newsletter(data),
+  searchContent: (query: string) => api.search(query),
 }
