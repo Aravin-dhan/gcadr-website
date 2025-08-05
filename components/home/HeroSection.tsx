@@ -21,15 +21,9 @@ export function HeroSection() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <img
-                    src="/gnlu-logo.jpg"
-                    alt="GNLU Logo"
-                    className="w-16 h-16 rounded-full object-cover shadow-lg"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
-                  />
+                  <div className="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
+                    <span className="text-white font-bold text-xl">GNLU</span>
+                  </div>
                   <div className="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium">
                     <span>Gujarat National Law University</span>
                   </div>

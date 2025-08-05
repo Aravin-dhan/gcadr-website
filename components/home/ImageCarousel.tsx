@@ -11,12 +11,34 @@ interface CarouselImage {
   description: string
   image: string
   link_url?: string
+  title_color?: string
+  show_title?: boolean
   is_active: boolean
   order: number
 }
 
 interface ImageCarouselProps {
   compact?: boolean
+}
+
+// Utility function to get title color classes
+const getTitleColorClass = (color?: string) => {
+  switch (color) {
+    case 'white':
+      return 'text-white'
+    case 'black':
+      return 'text-black'
+    case 'primary':
+      return 'text-primary-600'
+    case 'golden':
+      return 'text-yellow-400'
+    case 'red':
+      return 'text-red-500'
+    case 'green':
+      return 'text-green-500'
+    default:
+      return 'text-white'
+  }
 }
 
 export function ImageCarousel({ compact = false }: ImageCarouselProps) {
@@ -176,16 +198,22 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               
               {/* Content */}
-              {!compact && (
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 text-white">
+              {!compact && currentImage.show_title !== false && (
+                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="max-w-3xl"
                   >
-                    <h3 className="heading-3 mb-4">{currentImage.title}</h3>
-                    <p className="body-large mb-6 opacity-90">{currentImage.description}</p>
+                    {currentImage.title && (
+                      <h3 className={`heading-3 mb-4 ${getTitleColorClass(currentImage.title_color)}`}>
+                        {currentImage.title}
+                      </h3>
+                    )}
+                    <p className={`body-large mb-6 opacity-90 ${getTitleColorClass(currentImage.title_color)}`}>
+                      {currentImage.description}
+                    </p>
 
                     {currentImage.link_url && (
                       <a

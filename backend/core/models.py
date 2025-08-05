@@ -319,10 +319,21 @@ class Announcement(BaseModel):
 
 
 class CarouselImage(BaseModel):
-    title = models.CharField(max_length=200)
+    TITLE_COLORS = [
+        ('white', 'White'),
+        ('black', 'Black'),
+        ('primary', 'Primary Blue'),
+        ('golden', 'Golden'),
+        ('red', 'Red'),
+        ('green', 'Green'),
+    ]
+
+    title = models.CharField(max_length=200, blank=True, help_text="Optional title overlay on image")
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='carousel_images/')
     link_url = models.URLField(blank=True, help_text="Optional link when image is clicked")
+    title_color = models.CharField(max_length=20, choices=TITLE_COLORS, default='white', help_text="Color of the title text")
+    show_title = models.BooleanField(default=True, help_text="Whether to show title on image")
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0)
 

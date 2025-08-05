@@ -164,11 +164,13 @@ class LeadershipSerializer(serializers.ModelSerializer):
 
 class CarouselImageSerializer(serializers.ModelSerializer):
     image_url = serializers.CharField(source='get_image_url', read_only=True)
+    title_color_display = serializers.CharField(source='get_title_color_display', read_only=True)
 
     class Meta:
         model = CarouselImage
         fields = [
-            'id', 'title', 'description', 'image', 'image_url', 'link_url', 'is_active', 'order'
+            'id', 'title', 'description', 'image', 'image_url', 'link_url',
+            'title_color', 'title_color_display', 'show_title', 'is_active', 'order'
         ]
 
 class AnnouncementSerializer(serializers.ModelSerializer):
