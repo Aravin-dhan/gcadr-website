@@ -102,33 +102,57 @@ Access the Django admin at `/admin/` to manage:
 - Newsletter archives
 - Contact form submissions
 
-## Free Deployment Guide
+## Free Deployment Guide (24/7 Uptime)
 
-### Step 1: Deploy Backend to Render (Free)
+### 🥇 RECOMMENDED: Railway (Best Free Option)
 
-1. **Sign up for Render**: Go to [render.com](https://render.com) and create a free account
-2. **Connect GitHub**: Link your GitHub account to Render
-3. **Create Web Service**:
-   - Click "New +" → "Web Service"
-   - Connect your `gcadr-website` repository
-   - Configure:
-     - **Name**: `gcadr-backend`
-     - **Environment**: `Python 3`
-     - **Build Command**: `pip install -r backend/requirements.txt && cd backend && python manage.py collectstatic --noinput && python manage.py migrate`
-     - **Start Command**: `cd backend && gunicorn gcadr_backend.wsgi:application`
-     - **Root Directory**: Leave empty (will use repo root)
+#### Step 1: Deploy Backend to Railway
 
-4. **Add Environment Variables**:
+1. **Sign up for Railway**: Go to [railway.app](https://railway.app) and create account
+2. **Deploy from GitHub**:
+   - Click "Deploy from GitHub repo"
+   - Select your `gcadr-website` repository
+   - Railway will auto-detect Django
+
+3. **Configure Service**:
+   - **Root Directory**: `backend`
+   - **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput`
+   - **Start Command**: `python manage.py migrate && gunicorn gcadr_backend.wsgi:application --bind 0.0.0.0:$PORT`
+
+4. **Add PostgreSQL**:
+   - Click "New" → "Database" → "Add PostgreSQL"
+   - Railway automatically provides `DATABASE_URL`
+
+5. **Environment Variables**:
    ```
    DEBUG=False
    SECRET_KEY=your-generated-secret-key-here
-   ALLOWED_HOSTS=your-app-name.onrender.com
+   ALLOWED_HOSTS=your-app-name.railway.app
    CORS_ALLOWED_ORIGINS=https://your-frontend-url.vercel.app
    ```
 
-5. **Add PostgreSQL Database**:
-   - In Render dashboard, create a new PostgreSQL database (free tier)
-   - Copy the `DATABASE_URL` and add it to your web service environment variables
+### 🥈 Alternative: Render (Free but sleeps)
+
+**Note**: Render free tier spins down after 15 minutes of inactivity, causing 30-60 second cold starts.
+
+1. **Sign up for Render**: Go to [render.com](https://render.com)
+2. **Create Web Service**:
+   - Connect your `gcadr-website` repository
+   - **Build Command**: `cd backend && pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
+   - **Start Command**: `cd backend && gunicorn gcadr_backend.wsgi:application --bind 0.0.0.0:$PORT`
+
+3. **Add PostgreSQL Database** (free tier)
+4. **Environment Variables**: Same as Railway above
+
+### 🥉 Alternative: PythonAnywhere (Always On)
+
+1. **Sign up**: Go to [pythonanywhere.com](https://pythonanywhere.com) (free account)
+2. **Upload Code**: Use Git to clone your repository
+3. **Create Web App**: Django app with manual configuration
+4. **Configure**: Point to your Django settings
+5. **Database**: Free MySQL database included
+
+---
 
 ### Step 2: Deploy Frontend to Vercel (Free)
 
@@ -161,10 +185,34 @@ After both deployments are live:
 
 ### Step 5: Create Admin User
 
+**For Railway**:
+1. Go to your Railway project dashboard
+2. Click on your backend service
+3. Go to "Deploy" tab → "View Logs"
+4. Use the Railway CLI or web terminal to run: `python manage.py createsuperuser`
+
+**For Render**:
 1. Go to your Render backend dashboard
 2. Open the "Shell" tab
 3. Run: `python manage.py createsuperuser`
 4. Follow the prompts to create an admin user
+
+## Troubleshooting
+
+### Backend Build Issues
+- **Python Version**: Ensure `backend/runtime.txt` specifies `python-3.11.9`
+- **Dependencies**: Updated requirements.txt with compatible versions
+- **Build Command**: Make sure it includes `cd backend &&` prefix
+
+### Render Free Tier Limitations
+- **Cold Starts**: 30-60 second delay after 15 minutes of inactivity
+- **No SSH**: Limited debugging capabilities
+- **Solution**: Use Railway for always-on service
+
+### Database Connection Issues
+- **Check DATABASE_URL**: Ensure it's properly set in environment variables
+- **Migrations**: Run `python manage.py migrate` in deployment
+- **CORS**: Update `CORS_ALLOWED_ORIGINS` with your actual frontend URL
 
 ## Repository Information
 
