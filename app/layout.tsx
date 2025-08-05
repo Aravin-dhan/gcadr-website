@@ -5,6 +5,7 @@ import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,12 +35,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`min-h-screen flex flex-col bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text transition-colors duration-300 ${inter.variable} ${playfair.variable}`}>
         <ThemeProvider>
-          <Navigation />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <ScrollToTop />
+          <ErrorBoundary>
+            <Navigation />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+            <ScrollToTop />
+          </ErrorBoundary>
         </ThemeProvider>
       </body>
     </html>

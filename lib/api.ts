@@ -1,6 +1,9 @@
 // API service with caching, error handling, and performance optimization
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')
+    ? 'https://gcadr-website.onrender.com'
+    : 'http://localhost:8000')
 
 // Type definitions
 export interface BlogPost {
@@ -324,6 +327,9 @@ export const cacheManager = {
 }
 
 export { ApiError }
+
+// Default export
+export default api
 
 // Legacy export for backward compatibility
 export const apiService = {
