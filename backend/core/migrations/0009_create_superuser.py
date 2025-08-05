@@ -19,7 +19,7 @@ def reverse_create_superuser(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('core', '0001_initial'),
+        ('core', '0008_newsletterarchive'),
     ]
 
     operations = [
