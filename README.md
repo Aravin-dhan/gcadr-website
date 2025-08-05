@@ -102,38 +102,35 @@ Access the Django admin at `/admin/` to manage:
 - Newsletter archives
 - Contact form submissions
 
-## Free Deployment Guide (24/7 Uptime)
+## 100% Free Deployment Guide
 
-### 🥇 RECOMMENDED: Railway (Best Free Option)
+### 🥇 RECOMMENDED: Vercel (Frontend + Backend) - COMPLETELY FREE
 
-#### Step 1: Deploy Backend to Railway
+**Perfect for your usage**: 10,000 requests/year fits well within Vercel's free tier limits.
 
-1. **Sign up for Railway**: Go to [railway.app](https://railway.app) and create account
-2. **Deploy from GitHub**:
-   - Click "Deploy from GitHub repo"
-   - Select your `gcadr-website` repository
-   - Railway will auto-detect Django
+#### Deploy Everything to Vercel (Single Platform)
 
-3. **Configure Service**:
-   - **Root Directory**: `backend`
-   - **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput`
-   - **Start Command**: `python manage.py migrate && gunicorn gcadr_backend.wsgi:application --bind 0.0.0.0:$PORT`
+1. **Sign up for Vercel**: Go to [vercel.com](https://vercel.com)
+2. **Import Project**: Connect your `gcadr-website` repository
+3. **Automatic Deployment**: Vercel will deploy both frontend and backend
+4. **Database**: Use Vercel's free PostgreSQL or Supabase (free tier)
 
-4. **Add PostgreSQL**:
-   - Click "New" → "Database" → "Add PostgreSQL"
-   - Railway automatically provides `DATABASE_URL`
+**Advantages**:
+- ✅ Completely free for your usage
+- ✅ No cold starts for frontend
+- ✅ Serverless backend scales to zero
+- ✅ Single platform management
+- ✅ Global CDN included
 
-5. **Environment Variables**:
-   ```
-   DEBUG=False
-   SECRET_KEY=your-generated-secret-key-here
-   ALLOWED_HOSTS=your-app-name.railway.app
-   CORS_ALLOWED_ORIGINS=https://your-frontend-url.vercel.app
-   ```
+### 🥈 Alternative: Netlify + Supabase (Free)
 
-### 🥈 Alternative: Render (Free but sleeps)
+1. **Frontend on Netlify**: Deploy Next.js app
+2. **Backend on Supabase**: Use Supabase's free PostgreSQL + Edge Functions
+3. **Completely Free**: Both platforms have generous free tiers
 
-**Note**: Render free tier spins down after 15 minutes of inactivity, causing 30-60 second cold starts.
+### 🥉 Alternative: Render (Free but with cold starts)
+
+**Fixed Issues**: Added missing dependencies and better error handling.
 
 1. **Sign up for Render**: Go to [render.com](https://render.com)
 2. **Create Web Service**:
@@ -142,15 +139,15 @@ Access the Django admin at `/admin/` to manage:
    - **Start Command**: `cd backend && gunicorn gcadr_backend.wsgi:application --bind 0.0.0.0:$PORT`
 
 3. **Add PostgreSQL Database** (free tier)
-4. **Environment Variables**: Same as Railway above
+4. **Environment Variables**:
+   ```
+   DEBUG=False
+   SECRET_KEY=your-generated-secret-key-here
+   ALLOWED_HOSTS=your-app-name.onrender.com
+   CORS_ALLOWED_ORIGINS=https://your-frontend-url.vercel.app
+   ```
 
-### 🥉 Alternative: PythonAnywhere (Always On)
-
-1. **Sign up**: Go to [pythonanywhere.com](https://pythonanywhere.com) (free account)
-2. **Upload Code**: Use Git to clone your repository
-3. **Create Web App**: Django app with manual configuration
-4. **Configure**: Point to your Django settings
-5. **Database**: Free MySQL database included
+**Note**: Free tier sleeps after 15 minutes, causing 30-60 second cold starts.
 
 ---
 

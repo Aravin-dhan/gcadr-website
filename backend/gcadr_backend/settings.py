@@ -55,9 +55,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'markdownx',
     'core',
 ]
+
+# Add markdownx only if available
+try:
+    import markdownx
+    INSTALLED_APPS.append('markdownx')
+except ImportError:
+    pass
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
