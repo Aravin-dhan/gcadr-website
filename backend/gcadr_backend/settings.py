@@ -198,6 +198,9 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',')
+
 # REST Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
