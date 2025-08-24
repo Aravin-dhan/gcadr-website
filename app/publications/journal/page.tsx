@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { JournalHero } from '@/components/publications/JournalHero'
-import { JournalContent } from '@/components/publications/JournalContent'
+import JournalContent from '@/components/publications/JournalContent'
 import { JournalSubmissionCTA } from '@/components/publications/JournalSubmissionCTA'
 
 export const metadata: Metadata = {
