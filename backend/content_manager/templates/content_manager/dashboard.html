@@ -1,0 +1,116 @@
+{% extends 'content_manager/base.html' %}
+
+{% block title %}Dashboard - GCADR Content Manager{% endblock %}
+
+{% block content %}
+<div class="px-4 py-6 sm:px-0">
+    <div class="border-4 border-dashed border-gray-200 rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Content Management Dashboard</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Team Management -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Team Members</dt>
+                                <dd class="text-lg font-medium text-gray-900">Manage student team</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-5 py-3">
+                    <div class="text-sm">
+                        <a href="{% url 'content_manager:team_manager' %}" class="font-medium text-primary-600 hover:text-primary-500">
+                            Edit team members →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Management -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Homepage Carousel</dt>
+                                <dd class="text-lg font-medium text-gray-900">Manage slideshow</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-5 py-3">
+                    <div class="text-sm">
+                        <a href="{% url 'content_manager:carousel_manager' %}" class="font-medium text-primary-600 hover:text-primary-500">
+                            Edit carousel →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Management -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Blog Posts</dt>
+                                <dd class="text-lg font-medium text-gray-900">Create & edit posts</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-5 py-3">
+                    <div class="text-sm">
+                        <a href="{% url 'content_manager:blog_manager' %}" class="font-medium text-primary-600 hover:text-primary-500">
+                            Manage blog →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Build Section -->
+        <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Deploy Changes</h2>
+            <p class="text-gray-600 mb-4">
+                After making changes to your content, click the button below to build static files and prepare for deployment.
+            </p>
+            <button 
+                onclick="buildStaticContent()" 
+                class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded"
+            >
+                Build Static Content
+            </button>
+        </div>
+
+        <!-- Instructions -->
+        <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-blue-900 mb-3">Quick Start Guide</h3>
+            <ol class="list-decimal list-inside text-blue-800 space-y-2">
+                <li>Edit your content using the management interfaces above</li>
+                <li>Click "Build Static Content" to generate static files</li>
+                <li>Commit and push changes to GitHub for deployment</li>
+                <li>Your changes will appear on the live website automatically</li>
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}

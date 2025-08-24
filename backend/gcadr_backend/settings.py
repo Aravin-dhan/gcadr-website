@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'core',
+    'content_manager',
 ]
 
 # Add markdownx only if available

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
@@ -32,39 +32,6 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
         })))
       } catch (error) {
         console.error('Error fetching carousel images:', error)
-          // Fallback images
-          setImages([
-            {
-              id: '1',
-              title: 'GCADR Research Excellence',
-              description: 'Leading research in alternative dispute resolution and legal innovation.',
-              image: '/carousel/research.jpg',
-              link_url: '/publications',
-              is_active: true,
-              order: 1
-            },
-            {
-              id: '2',
-              title: 'Annual Arbitration Week',
-              description: 'Join us for our flagship event featuring renowned experts from around the world.',
-              image: '/carousel/arbitration-week.jpg',
-              link_url: '/events/arbitration-week',
-              is_active: true,
-              order: 2
-            },
-            {
-              id: '3',
-              title: 'GNLU Campus',
-              description: 'State-of-the-art facilities supporting world-class legal education.',
-              image: '/carousel/campus.jpg',
-              link_url: '/about',
-              is_active: true,
-              order: 3
-            }
-          ])
-        }
-      } catch (error) {
-        console.error('Error fetching carousel images:', error)
         // Fallback images on error
         setImages([
           {
@@ -75,6 +42,24 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
             link_url: '/publications',
             is_active: true,
             order: 1
+          },
+          {
+            id: '2',
+            title: 'Annual Arbitration Week',
+            description: 'Join us for our flagship event featuring renowned experts from around the world.',
+            image: '/carousel/arbitration-week.jpg',
+            link_url: '/events/arbitration-week',
+            is_active: true,
+            order: 2
+          },
+          {
+            id: '3',
+            title: 'GNLU Campus',
+            description: 'State-of-the-art facilities supporting world-class legal education.',
+            image: '/carousel/campus.jpg',
+            link_url: '/about',
+            is_active: true,
+            order: 3
           }
         ])
       } finally {

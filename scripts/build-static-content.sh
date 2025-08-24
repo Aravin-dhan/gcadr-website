@@ -83,6 +83,12 @@ if ! python -c "import django" 2>/dev/null; then
     pip install -r requirements.txt
 fi
 
+# Check if PyYAML is available
+if ! python -c "import yaml" 2>/dev/null; then
+    print_status "Installing PyYAML..."
+    pip install PyYAML==6.0.1
+fi
+
 # Set Django settings
 export DJANGO_SETTINGS_MODULE="gcadr_backend.settings"
 

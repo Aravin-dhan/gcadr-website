@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('content/', include('content_manager.urls')),
     path('markdownx/', include('markdownx.urls')),
     path('', include('core.urls')),
 ]
