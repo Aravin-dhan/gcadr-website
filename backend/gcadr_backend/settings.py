@@ -200,7 +200,17 @@ CORS_ALLOW_HEADERS = [
 ]
 
 # CSRF settings
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',')
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://gcadr-website.vercel.app',
+    'https://*.vercel.app',
+]
+
+# Add custom CSRF origins from environment if provided
+custom_origins = config('CSRF_TRUSTED_ORIGINS', default='')
+if custom_origins:
+    CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in custom_origins.split(',') if origin.strip()])
 
 # REST Framework settings
 REST_FRAMEWORK = {
