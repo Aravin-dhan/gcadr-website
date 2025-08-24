@@ -50,9 +50,17 @@ module.exports = {
           950: '#451a03',
         },
         golden: {
-          400: '#e6c08a', // Brighter version of the brand golden color
-          500: '#d4ac7c', // Primary brand golden color
-          600: '#c29968', // Darker version for hover states
+          50: '#fefce8',
+          100: '#fef9c3',
+          200: '#fef08a',
+          300: '#fde047',
+          400: '#facc15',
+          500: '#eab308',
+          600: '#ca8a04',
+          700: '#a16207',
+          800: '#854d0e',
+          900: '#713f12',
+          950: '#422006',
         },
         // Dark mode specific colors
         dark: {

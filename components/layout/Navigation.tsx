@@ -152,9 +152,9 @@ function NavItem({ item, pathname, resolvedTheme }: { item: NavigationItem; path
       <div className="relative" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
         <button className={`px-3 py-2 rounded-md text-base font-bold transition-colors flex items-center ${
           resolvedTheme === 'dark'
-            ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
+            ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-400 hover:text-golden-300 hover:bg-primary-600')
             : ['About Us', 'Publications', 'Events & Activities'].includes(item.name)
-              ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
+              ? (isActive ? 'text-golden-500 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
               : (isActive ? 'text-accent-300 bg-primary-600' : 'text-accent-200 hover:text-accent-300 hover:bg-primary-600')
         }`}>
           {item.name}
@@ -194,9 +194,9 @@ function NavItem({ item, pathname, resolvedTheme }: { item: NavigationItem; path
       prefetch={true}
       className={`px-3 py-2 rounded-md text-base font-bold transition-colors ${
         resolvedTheme === 'dark'
-          ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
+          ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-400 hover:text-golden-300 hover:bg-primary-600')
           : ['About Us', 'Publications', 'Events & Activities'].includes(item.name)
-            ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
+            ? (isActive ? 'text-golden-500 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
             : (isActive ? 'text-accent-300 bg-primary-600' : 'text-accent-200 hover:text-accent-300 hover:bg-primary-600')
       }`}
     >
@@ -216,9 +216,9 @@ function MobileNavItem({ item, pathname, resolvedTheme }: { item: NavigationItem
           onClick={() => setIsOpen(!isOpen)}
           className={`w-full flex items-center justify-between px-4 py-2 text-left rounded-lg font-bold transition-colors ${
             resolvedTheme === 'dark'
-              ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
+              ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-400 hover:text-golden-300 hover:bg-primary-600')
               : ['About Us', 'Publications', 'Events & Activities'].includes(item.name)
-                ? (isActive ? 'text-golden-400 bg-primary-50' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-50')
+                ? (isActive ? 'text-golden-500 bg-primary-50' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-50')
                 : (isActive ? 'text-accent-300 bg-primary-600' : 'text-accent-200 hover:text-accent-300 hover:bg-primary-600')
           }`}
         >
@@ -258,9 +258,9 @@ function MobileNavItem({ item, pathname, resolvedTheme }: { item: NavigationItem
       href={item.href}
       className={`block px-4 py-2 rounded-lg font-bold transition-colors ${
         resolvedTheme === 'dark'
-          ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-600')
+          ? (isActive ? 'text-golden-400 bg-primary-600' : 'text-golden-400 hover:text-golden-300 hover:bg-primary-600')
           : ['About Us', 'Publications', 'Events & Activities'].includes(item.name)
-            ? (isActive ? 'text-golden-400 bg-primary-50' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-50')
+            ? (isActive ? 'text-golden-500 bg-primary-50' : 'text-golden-500 hover:text-golden-400 hover:bg-primary-50')
             : (isActive ? 'text-accent-300 bg-primary-600' : 'text-accent-200 hover:text-accent-300 hover:bg-primary-600')
       }`}
     >

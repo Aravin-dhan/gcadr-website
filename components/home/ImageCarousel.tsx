@@ -32,34 +32,43 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
         })))
       } catch (error) {
         console.error('Error fetching carousel images:', error)
-        // Fallback images on error
+        // Fallback images with proper placeholders
         setImages([
           {
             id: '1',
-            title: 'GCADR Research Excellence',
-            description: 'Leading research in alternative dispute resolution and legal innovation.',
-            image: '/carousel/research.jpg',
-            link_url: '/publications',
+            title: 'Centre for Alternative Dispute Resolution',
+            description: 'Leading excellence in ADR education, research, and practice at Gujarat National Law University.',
+            image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            link_url: '/about',
             is_active: true,
             order: 1
           },
           {
             id: '2',
-            title: 'Annual Arbitration Week',
-            description: 'Join us for our flagship event featuring renowned experts from around the world.',
-            image: '/carousel/arbitration-week.jpg',
+            title: 'Annual Arbitration Week 2025',
+            description: 'Join us for our flagship event featuring renowned experts in alternative dispute resolution.',
+            image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
             link_url: '/events/arbitration-week',
             is_active: true,
             order: 2
           },
           {
             id: '3',
-            title: 'GNLU Campus',
-            description: 'State-of-the-art facilities supporting world-class legal education.',
-            image: '/carousel/campus.jpg',
-            link_url: '/about',
+            title: 'Research Excellence',
+            description: 'Advancing the frontiers of knowledge in dispute resolution through innovative research.',
+            image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            link_url: '/publications',
             is_active: true,
             order: 3
+          },
+          {
+            id: '4',
+            title: 'GNLU Campus',
+            description: 'State-of-the-art facilities supporting world-class legal education.',
+            image: 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            link_url: '/about',
+            is_active: true,
+            order: 4
           }
         ])
       } finally {
