@@ -1,0 +1,142 @@
+# GCADR Student Team Members
+# Edit this file to update team member information
+
+team_members:
+  - id: 1
+    name: "Garvita Bhatt"
+    position: "Convenor"
+    year: "2020 – 2025"
+    email: "garvita@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/garvita-bhatt"
+    image: "/media/team/garvita-bhatt.jpg"
+    bio: "Passionate about alternative dispute resolution and leading the team towards excellence"
+    order: 1
+    active: true
+
+  - id: 2
+    name: "Tahir Syed"
+    position: "Co-convenor"
+    year: "2021 – 2026"
+    email: "tahir@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/tahir-syed"
+    image: "/media/team/tahir-syed.jpg"
+    bio: "Dedicated to advancing ADR education and research"
+    order: 2
+    active: true
+
+  - id: 3
+    name: "Shreya Kumar"
+    position: "Secretary"
+    year: "2020 - 2025"
+    email: "shreya@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/shreya-kumar"
+    image: "/media/team/shreya-kumar.jpg"
+    bio: "Organizing events and managing administrative activities"
+    order: 3
+    active: true
+
+  - id: 4
+    name: "Anshuman Jhala"
+    position: "Co-secretary"
+    year: "2021 - 2026"
+    email: "anshuman@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/anshuman-jhala"
+    image: "/media/team/anshuman-jhala.jpg"
+    bio: "Supporting secretarial functions and event coordination"
+    order: 4
+    active: true
+
+  - id: 5
+    name: "Yuman Islam"
+    position: "Treasurer"
+    year: "2020 – 2025"
+    email: "yuman@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/yuman-islam"
+    image: "/media/team/yuman-islam.jpg"
+    bio: "Managing finances and budget planning"
+    order: 5
+    active: true
+
+  - id: 6
+    name: "Kanhai Parikh"
+    position: "Co-Treasurer"
+    year: "2021 – 2026"
+    email: "kanhai@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/kanhai-parikh"
+    image: "/media/team/kanhai-parikh.jpg"
+    bio: "Assisting with financial management and planning"
+    order: 6
+    active: true
+
+  - id: 7
+    name: "Jyotirmoy Alayman"
+    position: "Social Media Head"
+    year: "2022 – 2027"
+    email: "jyotirmoy@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/jyotirmoy-alayman"
+    image: "/media/team/jyotirmoy-alayman.jpg"
+    bio: "Managing social media presence and digital outreach"
+    order: 7
+    active: true
+
+  - id: 8
+    name: "Chaitya Doshi"
+    position: "IT and Blog Head"
+    year: "2020 – 2025"
+    email: "chaitya@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/chaitya-doshi"
+    image: "/media/team/chaitya-doshi.jpg"
+    bio: "Managing website and blog content"
+    order: 8
+    active: true
+
+  - id: 9
+    name: "Sanjana Kothari"
+    position: "Research and Outreach Head"
+    year: "2022-27"
+    email: "sanjana@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/sanjana-kothari"
+    image: "/media/team/sanjana-kothari.jpg"
+    bio: "Leading research initiatives and community outreach"
+    order: 9
+    active: true
+
+  - id: 10
+    name: "Aahini Gandhi"
+    position: "Research and Outreach Head"
+    year: "2022-27"
+    email: "aahini@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/aahini-gandhi"
+    image: "/media/team/aahini-gandhi.jpg"
+    bio: "Co-leading research and outreach activities"
+    order: 10
+    active: true
+
+  - id: 11
+    name: "Ayush Aryan"
+    position: "Student Mentor"
+    year: "2020 – 2025"
+    email: "ayush@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/ayush-aryan"
+    image: "/media/team/ayush-aryan.jpg"
+    bio: "Mentoring junior students and providing guidance"
+    order: 11
+    active: true
+
+  - id: 12
+    name: "Aarsh Soni"
+    position: "Mediation Cell Head"
+    year: "2020 – 2025"
+    email: "aarsh@gnlu.ac.in"
+    linkedin_url: "https://linkedin.com/in/aarsh-soni"
+    image: "/media/team/aarsh-soni.jpg"
+    bio: "Leading mediation training and practice sessions"
+    order: 12
+    active: true
+
+# Instructions for updating:
+# 1. To add a new member: Copy an existing entry and update all fields
+# 2. To remove a member: Set active: false
+# 3. To reorder: Change the order number
+# 4. To update info: Edit the relevant fields
+# 5. After editing, run: python manage.py import_team_data

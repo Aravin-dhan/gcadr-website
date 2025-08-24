@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { BookOpen, Download, ExternalLink } from 'lucide-react'
@@ -29,7 +29,7 @@ export function JournalContent() {
       try {
         setLoading(true)
         const response = await apiService.getJournalArticles()
-        if (response?.results && Array.isArray(response.results)) {
+        if (response.results && Array.isArray(response.results)) {
           setJournals(response.results)
         } else {
           // Fallback data
@@ -71,8 +71,7 @@ export function JournalContent() {
   }, [])
 
   return (
-    <>
-      <section ref={ref} className="py-20 bg-gray-50 dark:bg-dark-surface">
+    <section ref={ref} className="py-20 bg-gray-50 dark:bg-dark-surface">
       <div className="container-max section-padding">
         <div className="max-w-4xl mx-auto">
           
@@ -159,6 +158,9 @@ export function JournalContent() {
                 ))}
               </div>
             )}
+          </motion.div>
+
+
           </motion.div>
 
           {/* Submission Guidelines */}
@@ -256,7 +258,6 @@ export function JournalContent() {
           </motion.div>
         </div>
       </div>
-      </section>
-    </>
+    </section>
   )
 }

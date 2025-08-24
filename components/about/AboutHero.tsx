@@ -73,17 +73,18 @@ export function AboutHero() {
             className="relative"
           >
             <div className="relative bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-600 overflow-hidden">
-              <div className="w-full h-96 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-800 dark:to-primary-900 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-24 h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-white font-bold text-2xl">GNLU</span>
-                  </div>
-                  <div className="text-primary-700 dark:text-primary-300">
-                    <h3 className="font-semibold text-lg">Gujarat National Law University</h3>
-                    <p className="text-sm">Campus Excellence</p>
-                  </div>
-                </div>
-              </div>
+              <img
+                src="/gnlu-campus.jpg"
+                alt="Gujarat National Law University Campus"
+                className="w-full h-96 object-cover"
+                onError={(e) => {
+                  // Fallback to core values if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'block';
+                }}
+              />
 
               {/* Fallback Core Values (hidden by default) */}
               <div className="p-8 space-y-6" style={{ display: 'none' }}>
@@ -132,7 +133,8 @@ export function AboutHero() {
                 </div>
               </div>
 
-
+              {/* Image Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
             </div>
             
             {/* Floating Elements */}

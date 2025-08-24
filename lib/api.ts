@@ -76,7 +76,6 @@ interface ApiOptions {
   useCache?: boolean
   cacheTTL?: number // Time to live in milliseconds
   timeout?: number
-  priority?: 'high' | 'low'
 }
 
 class ApiError extends Error {

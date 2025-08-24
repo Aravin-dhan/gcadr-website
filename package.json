@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "content:build": "./scripts/build-static-content.sh",
+    "content:dev": "cd backend && python manage.py runserver",
+    "content:import": "cd backend && python manage.py import_markdown_blogs && python manage.py import_team_data",
+    "content:export": "cd backend && python manage.py export_static_content",
+    "deploy": "npm run content:build && git add . && git commit -m 'Update static content' && git push"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",

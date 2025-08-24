@@ -1,0 +1,64 @@
+# GCADR Announcements Configuration
+# Edit this file to update site announcements
+
+announcements:
+  - id: 1
+    title: "Annual Arbitration Week 2025"
+    content: "Join us for our flagship event featuring renowned experts in alternative dispute resolution from March 24-28, 2025. This comprehensive program will cover the latest developments in arbitration, mediation, and other ADR mechanisms."
+    type: "event"
+    featured: true
+    published_date: "2024-03-15"
+    active: true
+
+  - id: 2
+    title: "GALR Journal Submission Deadline Extended"
+    content: "The submission deadline for Volume 2, Issue 2 of the Gujarat ADR Law Review has been extended to April 15, 2025. We encourage researchers and practitioners to submit their high-quality papers."
+    type: "deadline"
+    featured: true
+    published_date: "2024-03-10"
+    active: true
+
+  - id: 3
+    title: "New Certificate Course in Commercial Mediation"
+    content: "GCADR is pleased to announce the launch of a new certificate course in commercial mediation. Registration is now open for the February 2025 batch. Limited seats available."
+    type: "news"
+    featured: false
+    published_date: "2024-03-08"
+    active: true
+
+  - id: 4
+    title: "Research Collaboration with International ADR Institute"
+    content: "GCADR has entered into a research collaboration agreement with the International Institute for Alternative Dispute Resolution to advance cross-border ADR research."
+    type: "news"
+    featured: false
+    published_date: "2024-03-05"
+    active: true
+
+  - id: 5
+    title: "Student Research Paper Competition 2025"
+    content: "Applications are now open for the annual student research paper competition. Cash prizes and publication opportunities available for winning entries. Deadline: March 1, 2025."
+    type: "deadline"
+    featured: false
+    published_date: "2024-03-01"
+    active: true
+
+  - id: 6
+    title: "Guest Lecture Series on International Arbitration"
+    content: "Join us for a series of guest lectures by leading international arbitration practitioners. Sessions will be held every Friday in February 2025."
+    type: "event"
+    featured: false
+    published_date: "2024-02-28"
+    active: true
+
+# Announcement Types:
+# - news: General news and updates
+# - event: Upcoming events and workshops
+# - deadline: Important deadlines and dates
+# - general: General announcements
+
+# Instructions:
+# 1. To add a new announcement: Copy an existing entry and update all fields
+# 2. To remove an announcement: Set active: false
+# 3. To feature an announcement: Set featured: true
+# 4. Date format: YYYY-MM-DD
+# 5. After editing, run: npm run content:build

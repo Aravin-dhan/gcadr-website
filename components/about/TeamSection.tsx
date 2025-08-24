@@ -20,112 +20,100 @@ interface TeamMember {
 export function TeamSection() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
   {
-    id: '1',
     name: 'Garvita Bhatt',
-    position: 'Convenor',
-    year: '2020 – 2025',
-    linkedin_url: 'https://linkedin.com/in/garvita-bhatt',
-    image: '/team/garvita-bhatt.jpg',
-    order: 1
+    role: 'Convenor',
+    batch: '2020 – 2025',
+    initials: 'GB',
+    linkedin: 'https://linkedin.com/in/garvita-bhatt',
+    image: '/team/garvita-bhatt.jpg'
   },
   {
-    id: '2',
     name: 'Tahir Syed',
-    position: 'Co-convenor',
-    year: '2021 – 2026',
-    linkedin_url: 'https://linkedin.com/in/tahir-syed',
-    image: '/team/tahir-syed.jpg',
-    order: 2
+    role: 'Co-convenor',
+    batch: '2021 – 2026',
+    initials: 'TS',
+    linkedin: 'https://linkedin.com/in/tahir-syed',
+    image: '/team/tahir-syed.jpg'
   },
   {
-    id: '3',
     name: 'Shreya Kumar',
-    position: 'Secretary',
-    year: '2020 - 2025',
-    linkedin_url: 'https://linkedin.com/in/shreya-kumar',
-    image: '/team/shreya-kumar.jpg',
-    order: 3
+    role: 'Secretary',
+    batch: '2020 - 2025',
+    initials: 'SK',
+    linkedin: 'https://linkedin.com/in/shreya-kumar',
+    image: '/team/shreya-kumar.jpg'
   },
   {
-    id: '4',
     name: 'Anshuman Jhala',
-    position: 'Co-secretary',
-    year: '2021 - 2026',
-    linkedin_url: 'https://linkedin.com/in/anshuman-jhala',
-    image: '/team/anshuman-jhala.jpg',
-    order: 4
+    role: 'Co-secretary',
+    batch: '2021 - 2026',
+    initials: 'AJ',
+    linkedin: 'https://linkedin.com/in/anshuman-jhala',
+    image: '/team/anshuman-jhala.jpg'
   },
   {
-    id: '5',
     name: 'Yuman Islam',
-    position: 'Treasurer',
-    year: '2020 – 2025',
-    linkedin_url: 'https://linkedin.com/in/yuman-islam',
-    image: '/team/yuman-islam.jpg',
-    order: 5
+    role: 'Treasurer',
+    batch: '2020 – 2025',
+    initials: 'YI',
+    linkedin: 'https://linkedin.com/in/yuman-islam',
+    image: '/team/yuman-islam.jpg'
   },
   {
-    id: '6',
     name: 'Kanhai Parikh',
-    position: 'Co-Treasurer',
-    year: '2021 – 2026',
-    linkedin_url: 'https://linkedin.com/in/kanhai-parikh',
-    image: '/team/kanhai-parikh.jpg',
-    order: 6
+    role: 'Co-Treasurer',
+    batch: '2021 – 2026',
+    initials: 'KP',
+    linkedin: 'https://linkedin.com/in/kanhai-parikh',
+    image: '/team/kanhai-parikh.jpg'
   },
   {
-    id: '7',
     name: 'Jyotirmoy Alayman',
-    position: 'Social Media Head',
-    year: '2022 – 2027',
-    linkedin_url: 'https://linkedin.com/in/jyotirmoy-alayman',
-    image: '/team/jyotirmoy-alayman.jpg',
-    order: 7
+    role: 'Social Media Head',
+    batch: '2022 – 2027',
+    initials: 'JA',
+    linkedin: 'https://linkedin.com/in/jyotirmoy-alayman',
+    image: '/team/jyotirmoy-alayman.jpg'
   },
   {
-    id: '8',
     name: 'Chaitya Doshi',
-    position: 'IT and Blog Head',
-    year: '2020 – 2025',
-    linkedin_url: 'https://linkedin.com/in/chaitya-doshi',
-    image: '/team/chaitya-doshi.jpg',
-    order: 8
+    role: 'IT and Blog Head',
+    batch: '2020 – 2025',
+    initials: 'CD',
+    linkedin: 'https://linkedin.com/in/chaitya-doshi',
+    image: '/team/chaitya-doshi.jpg'
   },
   {
-    id: '9',
     name: 'Sanjana Kothari',
-    position: 'Research and Outreach Head',
-    year: '2022-27',
-    linkedin_url: 'https://linkedin.com/in/sanjana-kothari',
-    image: '/team/sanjana-kothari.jpg',
-    order: 9
+    role: 'Research and Outreach Head',
+    batch: '2022-27',
+    initials: 'SK',
+    linkedin: 'https://linkedin.com/in/sanjana-kothari',
+    image: '/team/sanjana-kothari.jpg'
   },
   {
-    id: '10',
     name: 'Aahini Gandhi',
-    position: 'Research and Outreach Head',
-    year: '2022-27',
-    linkedin_url: 'https://linkedin.com/in/aahini-gandhi',
-    image: '/team/aahini-gandhi.jpg',
-    order: 10
+    role: 'Research and Outreach Head',
+    batch: '2022-27',
+    initials: 'AG',
+    linkedin: 'https://linkedin.com/in/aahini-gandhi',
+    image: '/team/aahini-gandhi.jpg'
   },
   {
-    id: '11',
     name: 'Ayush Aryan',
-    position: 'Student Mentor',
-    year: '2020 – 2025',
-    linkedin_url: 'https://linkedin.com/in/ayush-aryan',
-    image: '/team/ayush-aryan.jpg',
-    order: 11
+    role: 'Student Mentor',
+    batch: '2020 – 2025',
+    initials: 'AA',
+    linkedin: 'https://linkedin.com/in/ayush-aryan',
+    image: '/team/ayush-aryan.jpg'
   },
   {
-    id: '12',
     name: 'Aarsh Soni',
-    position: 'Mediation Cell Head',
-    year: '2020 – 2025',
-    linkedin_url: 'https://linkedin.com/in/aarsh-soni',
-    image: '/team/aarsh-soni.jpg',
-    order: 12
+    role: 'Mediation Cell Head',
+    batch: '2020 – 2025',
+    initials: 'AS',
+    linkedin: 'https://linkedin.com/in/aarsh-soni',
+    image: '/team/aarsh-soni.jpg'
   }
   ])
   const [loading, setLoading] = useState(true)

@@ -41,12 +41,7 @@ export function AnnouncementsSection() {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
-          (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')
-            ? 'https://gcadr-website.onrender.com'
-            : 'http://localhost:8000')
-
-        const response = await fetch(`${API_BASE_URL}/api/announcements/?limit=6`)
+        const response = await fetch('http://localhost:8000/api/announcements/?limit=6')
         if (response.ok) {
           const data = await response.json()
           // Ensure data is an array

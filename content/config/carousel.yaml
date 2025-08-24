@@ -1,0 +1,51 @@
+# GCADR Homepage Carousel Configuration
+# Edit this file to update the homepage slideshow
+
+carousel_images:
+  - id: 1
+    title: "Centre for Alternative Dispute Resolution"
+    description: "Leading excellence in ADR education, research, and practice at Gujarat National Law University"
+    image: "/media/carousel/gcadr-main-banner.jpg"
+    title_color: "white"
+    show_title: true
+    link_url: "/about"
+    order: 1
+    active: true
+
+  - id: 2
+    title: "Annual Arbitration Week 2025"
+    description: "Join us for our flagship event featuring renowned experts in alternative dispute resolution"
+    image: "/media/carousel/arbitration-week-banner.jpg"
+    title_color: "golden"
+    show_title: true
+    link_url: "/events/arbitration-week"
+    order: 2
+    active: true
+
+  - id: 3
+    title: "Research Excellence"
+    description: "Advancing the frontiers of knowledge in dispute resolution through innovative research"
+    image: "/media/carousel/research-banner.jpg"
+    title_color: "white"
+    show_title: true
+    link_url: "/publications"
+    order: 3
+    active: true
+
+  - id: 4
+    title: "GNLU Campus"
+    description: "State-of-the-art facilities supporting world-class legal education"
+    image: "/media/carousel/campus-banner.jpg"
+    title_color: "primary"
+    show_title: true
+    link_url: "/about"
+    order: 4
+    active: true
+
+# Instructions:
+# 1. To add a new slide: Copy an existing entry and update all fields
+# 2. To remove a slide: Set active: false
+# 3. To reorder slides: Change the order number
+# 4. Title colors: white, black, primary, golden, red, green
+# 5. Images should be placed in content/media/carousel/
+# 6. Recommended image size: 1200x600px

@@ -1,0 +1,58 @@
+# GCADR Leadership and Faculty
+# Edit this file to update leadership information
+
+leadership:
+  - id: 1
+    name: "Dr. Vikas Gandhi"
+    position: "Director, GCADR"
+    bio: "Dr. Vikas Gandhi is a renowned expert in alternative dispute resolution with over 20 years of experience in arbitration, mediation, and legal education. He has authored numerous publications on ADR and serves as an arbitrator in various national and international disputes."
+    email: "director.gcadr@gnlu.ac.in"
+    image: "/media/leadership/vikas-gandhi.jpg"
+    order: 1
+
+  - id: 2
+    name: "Prof. Bimal Patel"
+    position: "Vice-Chancellor, GNLU"
+    bio: "Prof. Bimal Patel is the Vice-Chancellor of Gujarat National Law University and a distinguished academic with expertise in international law, constitutional law, and legal education. Under his leadership, GNLU has emerged as one of India's premier law universities."
+    email: "vc@gnlu.ac.in"
+    image: "/media/leadership/bimal-patel.jpg"
+    order: 2
+
+  - id: 3
+    name: "Dr. Rajesh Kumar"
+    position: "Associate Director, GCADR"
+    bio: "Dr. Rajesh Kumar specializes in commercial arbitration and has extensive experience in handling complex commercial disputes. He regularly conducts training programs for legal professionals and has been instrumental in developing GCADR's curriculum."
+    email: "rajesh.kumar@gnlu.ac.in"
+    image: "/media/leadership/rajesh-kumar.jpg"
+    order: 3
+
+  - id: 4
+    name: "Prof. Priya Sharma"
+    position: "Professor of Law"
+    bio: "Prof. Priya Sharma is a leading expert in mediation and restorative justice. She has conducted extensive research on alternative dispute resolution mechanisms and has published widely on the subject. She also serves as a mediator in family and commercial disputes."
+    email: "priya.sharma@gnlu.ac.in"
+    image: "/media/leadership/priya-sharma.jpg"
+    order: 4
+
+  - id: 5
+    name: "Dr. Amit Verma"
+    position: "Assistant Professor"
+    bio: "Dr. Amit Verma focuses on international arbitration and investment disputes. He has represented clients in various international arbitration proceedings and brings practical experience to his academic role. He is also involved in training programs for young arbitrators."
+    email: "amit.verma@gnlu.ac.in"
+    image: "/media/leadership/amit-verma.jpg"
+    order: 5
+
+  - id: 6
+    name: "Ms. Neha Gupta"
+    position: "Research Coordinator"
+    bio: "Ms. Neha Gupta coordinates research activities at GCADR and manages various research projects. She has a strong background in legal research methodology and has contributed to several publications on alternative dispute resolution."
+    email: "neha.gupta@gnlu.ac.in"
+    image: "/media/leadership/neha-gupta.jpg"
+    order: 6
+
+# Instructions for updating:
+# 1. To add a new member: Copy an existing entry and update all fields
+# 2. To remove a member: Delete the entire entry
+# 3. To reorder: Change the order number
+# 4. To update info: Edit the relevant fields
+# 5. After editing, run: npm run content:build

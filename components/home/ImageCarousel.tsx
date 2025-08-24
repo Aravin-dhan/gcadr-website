@@ -4,41 +4,12 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
+import { contentLoader, type CarouselImage } from '@/lib/staticContent'
 
-interface CarouselImage {
-  id: string
-  title: string
-  description: string
-  image: string
-  link_url?: string
-  title_color?: string
-  show_title?: boolean
-  is_active: boolean
-  order: number
-}
+// CarouselImage interface is now imported from staticContent
 
 interface ImageCarouselProps {
   compact?: boolean
-}
-
-// Utility function to get title color classes
-const getTitleColorClass = (color?: string) => {
-  switch (color) {
-    case 'white':
-      return 'text-white'
-    case 'black':
-      return 'text-black'
-    case 'primary':
-      return 'text-primary-600'
-    case 'golden':
-      return 'text-yellow-400'
-    case 'red':
-      return 'text-red-500'
-    case 'green':
-      return 'text-green-500'
-    default:
-      return 'text-white'
-  }
 }
 
 export function ImageCarousel({ compact = false }: ImageCarouselProps) {
@@ -54,20 +25,13 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
-          (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')
-            ? 'https://gcadr-website.onrender.com'
-            : 'http://localhost:8000')
-
-        const response = await fetch(`${API_BASE_URL}/api/carousel/`)
-        if (response.ok) {
-          const data = await response.json()
-          const imagesArray = Array.isArray(data) ? data : (data.results || [])
-          setImages(imagesArray.map((img: any) => ({
-            ...img,
-            image: img.image_url || img.image
-          })))
-        } else {
+        const imagesData = await contentLoader.getCarouselImages()
+        setImages(imagesData.map((img: CarouselImage) => ({
+          ...img,
+          image: contentLoader.getMediaUrl(img.image_url || img.image)
+        })))
+      } catch (error) {
+        console.error('Error fetching carousel images:', error)
           // Fallback images
           setImages([
             {
@@ -198,22 +162,16 @@ export function ImageCarousel({ compact = false }: ImageCarouselProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               
               {/* Content */}
-              {!compact && currentImage.show_title !== false && (
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+              {!compact && (
+                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 text-white">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="max-w-3xl"
                   >
-                    {currentImage.title && (
-                      <h3 className={`heading-3 mb-4 ${getTitleColorClass(currentImage.title_color)}`}>
-                        {currentImage.title}
-                      </h3>
-                    )}
-                    <p className={`body-large mb-6 opacity-90 ${getTitleColorClass(currentImage.title_color)}`}>
-                      {currentImage.description}
-                    </p>
+                    <h3 className="heading-3 mb-4">{currentImage.title}</h3>
+                    <p className="body-large mb-6 opacity-90">{currentImage.description}</p>
 
                     {currentImage.link_url && (
                       <a
